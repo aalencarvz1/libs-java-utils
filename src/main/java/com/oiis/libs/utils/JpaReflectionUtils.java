@@ -5,7 +5,6 @@ import jakarta.persistence.Table;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.lang.reflect.TypeVariable;
 import java.util.Optional;
 
 /**
@@ -15,7 +14,12 @@ import java.util.Optional;
  */
 public final class JpaReflectionUtils {
 
-    private JpaReflectionUtils() {}
+    /**
+     * private constructor avoid instantiate this class
+     */
+    private JpaReflectionUtils() {
+        throw new UnsupportedOperationException("Utility class");
+    }
 
     /**
      * Resolve o tipo real da entidade referenciada em um campo JPA com @JoinColumn.
@@ -27,7 +31,7 @@ public final class JpaReflectionUtils {
     public static Optional<Class<?>> resolveEntityType(Field field, Class<?> entityClass) {
         try {
             // Se for um campo normal (não genérico)
-            if (!isGeneric(field)) {
+            if (!ReflectionUtils.isGeneric(field)) {
                 return Optional.of(field.getType());
             }
 
@@ -68,11 +72,5 @@ public final class JpaReflectionUtils {
                 : entityType.getSimpleName();
     }
 
-    /**
-     * Verifica se o campo tem tipo genérico.
-     */
-    private static boolean isGeneric(Field field) {
-        Type type = field.getGenericType();
-        return type instanceof TypeVariable<?>;
-    }
+
 }
