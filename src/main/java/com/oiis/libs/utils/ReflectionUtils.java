@@ -1,6 +1,7 @@
 package com.oiis.libs.utils;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
 import java.util.ArrayList;
@@ -50,6 +51,36 @@ public final class ReflectionUtils {
             }
         }
         return fields;
+    }
+
+
+    /**
+     * get all methods including ascendant inherited methods of a type
+     * @param type the class to get all methods
+     * @return the list of all methods
+     */
+    public static ArrayList<Method> getAllMethods(Class<?> type) {
+        ArrayList<Method> methods = new ArrayList<>();
+        Set<String> methodNames = new HashSet<>(); // to avoid duplicates
+        for (Class<?> c = type; c != null && c != Object.class; c = c.getSuperclass()) {
+            Method[] currentMethods = c.getDeclaredMethods();
+            if (c.equals(type)) {
+                for (int i = 0; i < currentMethods.length; i++) {
+                    if (!methodNames.contains(currentMethods[i].getName())) {
+                        methodNames.add(currentMethods[i].getName());
+                        methods.add(currentMethods[i]);
+                    }
+                }
+            } else {
+                for (int i = currentMethods.length-1; i > -1; i--) {
+                    if (!methodNames.contains(currentMethods[i].getName())) {
+                        methodNames.add(currentMethods[i].getName());
+                        methods.add(0,currentMethods[i]);
+                    }
+                }
+            }
+        }
+        return methods;
     }
 
 
