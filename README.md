@@ -94,11 +94,20 @@ String result = ObjectUtils.coalesce(null, null, "value"); // returns "value"
 @Configuration
 public class DbConfig {
 
+    //on entity factory builder
     @Bean
     public LocalContainerEntityManagerFactoryBean emf(EntityManagerFactoryBuilder builder) {
         LocalContainerEntityManagerFactoryBean factory = builder.build();
         DefaultReadOnlyEventListener.register(factory.getObject());
         return factory;
+    }
+    
+    //or on smart initializer
+    @Bean
+    public SmartInitializingSingleton singletonInitializer(EntityManagerFactory emf) {
+        return () -> {
+            DefaultReadOnlyEventListener.register(emf);
+        };
     }
 }
 ```
@@ -108,8 +117,7 @@ public class DbConfig {
 ## 🛠️ Cloning the Repository
 
 ``` bash
-git clone https://github.com/yourcompany/jpa-utils.git
-cd jpa-utils
+git clone https://github.com/aalencarvz1/libs-java-utils.git
 ```
 
 ------------------------------------------------------------------------
