@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>io.github.aalencarvz1.libs.commons</groupId>
-	<artifactId>utils</artifactId>
-	<version>3.0.0</version>
-	<name>Utils java library</name>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>io.github.aalencarvz1.libs.commons</groupId>
+    <artifactId>utils</artifactId>
+    <version>4.0.0</version>
+    <name>Utils java library</name>
     <description>Utils java library</description>
     <url>https://github.com/aalencarvz1/libs-java-utils</url>
 
@@ -53,7 +53,15 @@
             <scope>provided</scope>
         </dependency>
 
-       <!-- Hibernate Core API + SPI (necessário para eventos) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>7.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+
+        <!-- Hibernate Core API + SPI (necessário para eventos) -->
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -61,6 +69,19 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.42</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.17</version>
+        </dependency>
 
 
     </dependencies>
@@ -141,6 +162,8 @@
                     </execution>
                 </executions>
             </plugin>
+
+
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

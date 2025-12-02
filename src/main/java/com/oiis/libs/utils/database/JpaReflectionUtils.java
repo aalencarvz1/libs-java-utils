@@ -1,5 +1,6 @@
-package com.oiis.libs.utils;
+package com.oiis.libs.utils.database;
 
+import com.oiis.libs.utils.ReflectionUtils;
 import jakarta.persistence.Table;
 
 import java.lang.reflect.Field;
