@@ -4,9 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.aalencarvz1.libs.commons</groupId>
     <artifactId>utils</artifactId>
-    <version>4.0.0</version>
+    <version>4.1.0</version>
     <name>Utils java library</name>
-    <description>Utils java library</description>
+    <description>
+        ⚠️ DEPRECATED — This artifact is no longer maintained.
+        Please migrate to the new library at: com.sysnormal.libs:utils
+    </description>
     <url>https://github.com/aalencarvz1/libs-java-utils</url>
 
     <organization>
@@ -74,6 +77,12 @@
             <artifactId>lombok</artifactId>
             <version>1.18.42</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webflux</artifactId>
+            <version>7.0.1</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
